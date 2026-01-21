@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NaariCares – Your PCOS Care Companion</title>
+
+  <style>
+    :root {
+      --primary: #d96aa7;
+      --secondary: #f8c8dc;
+      --accent: #7b4b94;
+      --background: #fff7fb;
+      --card: #ffffff;
+      --text-dark: #3a3a3a;
+      --text-light: #777;
+    }
+
+    {
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text-dark);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    /* Main container */
+    .container {
+      padding: 2rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 0.7rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .card button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .card button:hover {
+      background: var(--accent);
+    }
+
+    /* Section titles */
+    .section-title {
+      font-size: 1.6rem;
+      text-align: center;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    /* Form */
+    .form-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+
+    .form-box h3 {
+      text-align: center;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .form-box button {
+      width: 100%;
+      margin-top: 1rem;
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 0.7rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    footer span {
+      color: var(--primary);
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>NaariCares 🌸</h1>
+    <p>Your AI-assisted companion for PCOS awareness & daily care</p>
+  </header>
+
+  <!-- Main -->
+  <div class="container">
+
+    <!-- Features -->
+    <h2 class="section-title">How NaariCares Supports You</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>🤍 Symptom Awareness</h3>
+        <p>Understand what your body is telling you and know when it’s time to seek help.</p>
+        <button>Start Chat</button>
+      </div>
+
+      <div class="card">
+        <h3>💊 Medication Reminders</h3>
+        <p>Never miss your medicines with gentle reminders and habit tracking.</p>
+        <button>Add Medicine</button>
+      </div>
+
+      <div class="card">
+        <h3>🥗 PCOS-Friendly Diet</h3>
+        <p>Track your meals and get diet suggestions customized to your preferences.</p>
+        <button>Log Food</button>
+      </div>
+
+      <div class="card">
+        <h3>📊 Health Insights</h3>
+        <p>View your risk level, habits, and weekly consistency at a glance.</p>
+        <button>View Dashboard</button>
+      </div>
+    </div>
+
+    <!-- Medication Form -->
+    <h2 class="section-title">Add Medication</h2>
+
+    <div class="form-box">
+      <h3>Medication Tracker</h3>
+
+      <div class="form-group">
+        <label>Medicine Name</label>
+        <input type="text" placeholder="e.g. Metformin">
+      </div>
+
+      <div class="form-group">
+        <label>Dosage</label>
+        <input type="text" placeholder="e.g. 500 mg">
+      </div>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time">
+      </div>
+
+      <button>Save Reminder</button>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <span>NaariCares</span> is an awareness and support platform.  
+      It does not replace professional medical advice.
+    </p>
+  </footer>
+
+</body>
+</html>
