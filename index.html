@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NaariCares – Your PCOS Care Companion</title>
+  <title>NaariCares – Your PCOS/PCOD Care Companion</title>
 
   <style>
     :root {
@@ -18,7 +18,7 @@
 
     * {
       box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", sans-seri;
       margin: 0;
       padding: 0;
     }
@@ -176,7 +176,7 @@
   <!-- Header -->
   <header>
     <h1>NaariCares 🌸</h1>
-    <p>Your AI-assisted companion for PCOS awareness & daily care</p>
+    <p>Your AI-assisted companion for PCOS/PCOD awareness & daily care</p>
   </header>
 
   <!-- Main -->
@@ -209,6 +209,18 @@
         <p>View your risk level, habits, and weekly consistency at a glance.</p>
         <button>View Dashboard</button>
       </div>
+
+      <div class="card">
+        <h3>🍴 Locate restaurants </h3>
+        <p>Find nearby PCOS/PCOD friendly restaurants .</p>
+        <button id="locateRestaurantBtn">Find Now</button>
+      </div>
+
+      <div class="card">
+        <h3>♀️ Locate Gynecologist </h3>
+        <p>Find nearest gynecologist for consultant.</p>
+        <button id="locateGynBtn">Find Now</button>
+      </div>
     </div>
 
     <!-- Medication Form -->
@@ -232,9 +244,8 @@
         <input type="time">
       </div>
 
-      <button>Save Reminder</button>
+      <button type="button">Save Reminder</button>
     </div>
-
   </div>
 
   <!-- Footer -->
@@ -245,5 +256,6 @@
     </p>
   </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
