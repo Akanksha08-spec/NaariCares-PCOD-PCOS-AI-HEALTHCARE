@@ -256,6 +256,102 @@
     </p>
   </footer>
 
-<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    //
+    // 1. Medication Reminder (your existing code)
+
+    const saveButton = document.querySelector('.form-box button');
+    if (saveButton) {
+        saveButton.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const medicine = document.querySelector('input[placeholder="e.g. Metformin"]').value.trim();
+            const dosage = document.querySelector('input[placeholder="e.g. 500 mg"]').value.trim();
+            const time = document.querySelector('input[type="time"]').value;
+
+            if (!medicine || !dosage || !time) {
+                alert('Please fill all fields!');
+                return;
+            }
+
+            alert(`Reminder Saved!\nMedicine: ${medicine}\nDosage: ${dosage}\nTime: ${time}`);
+
+            document.querySelectorAll('.form-group input').forEach(input => input.value = '');
+        });
+    }
+
+    const apiKey = 'AIzaSyCFP6nvelOdup4x2sqMvif39CJdtGp6KdI';  // ← your key in quotes!
+
+    function loadGoogleMaps(callback) {
+        if (window.google?.maps?.places) {
+            callback();
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&v=weekly&loading=async`;
+        script.async = true;
+        script.defer = true;
+        script.onload = callback;
+        script.onerror = () => alert("Google Maps failed to load. Check API key / console.");
+        document.head.appendChild(script);
+    }
+
+    async function searchNearbyPlaces(lat, lng, keyword, title) {
+        if (!google?.maps?.places) {
+            alert("Maps library not loaded yet.");
+            return;
+        }
+
+        const {Place} = google.maps.places;
+        const request = {
+            locationBias: {circle: {center: {lat, lng}, radius: 10000}}, // 10km
+            fields: ["displayName", "formattedAddress", "rating"],
+            keyword: keyword
+        };
+
+        try {
+            const {places} = await Place.searchNearby(request);
+            if (places?.length > 0) {
+                let msg = `${title} nearby:\n\n`;
+                places.slice(0, 5).forEach((place, i) => {
+                    msg += `${i + 1}. ${place.displayName}\n   ${place.formattedAddress || 'No address'}\n   Rating: ${place.rating || 'N/A'}\n\n`;
+                });
+                msg += "Disclaimer: Not medical/diet advice. Verify details.";
+                alert(msg);
+            } else {
+                alert(`No ${title.toLowerCase()} found nearby.`);
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Search failed: " + err.message);
+        }
+    }
+
+    function handleLocationFor(title, keyword) {
+        if (!navigator.geolocation) {
+            alert("Location not supported.");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            pos => {
+                loadGoogleMaps(() => searchNearbyPlaces(pos.coords.latitude, pos.coords.longitude, keyword, title));
+            },
+            err => alert("Location access denied or error."),
+            {enableHighAccuracy: true, timeout: 10000}
+        );
+    }
+
+    document.getElementById('locateRestaurantBtn')?.addEventListener('click', () =>
+        handleLocationFor("PCOS-friendly restaurants", "restaurant low GI OR healthy OR vegetarian OR salad OR whole grain")
+    );
+
+    document.getElementById('locateGynBtn')?.addEventListener('click', () =>
+        handleLocationFor("Gynecologists / Women's clinics", "gynecologist OR gynaecologist OR women clinic OR obstetrics OR PCOS")
+    );
+});
+    </script>
 </body>
 </html>
